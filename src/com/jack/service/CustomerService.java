@@ -23,5 +23,6 @@ public class CustomerService {
 
         System.out.println ("destroy================");
         System.out.println ( " = ==================="  );
+        System.out.println ( " ++++++++++++++++++++++++++++++"  );
     }
 }
