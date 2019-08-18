@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> <!-- bean definitions here -->
+
+
+<!--注意这里的约束要用contect类型的约束-->
+
+    <!-- 配置注解扫描包-->
+   <!-- <context:component-scan base-package="com.jack.service"></context:component-scan>-->
+
+    <!--交给spring管理-->
+
+    <bean id="studentService" class="com.jack.service.aop.StudentServiceImpl"></bean>
+
+    <!--配置切面，给spring管理-->
+    <bean id="myAspect" class="com.jack.service.aop.MyAspect"></bean>
+
+    <!--配置AOP实现目标类的方法增强-->
+    <aop:config>
+        <!--配置哪个包下的类的哪个方法需要增强:注意：aop:pointcut一般在前面；；；*（这个*是任意返回值） com.jack.service.aop.*.*(..))-->
+        <aop:pointcut id="demo" expression="execution(* com.jack.service.aop.*.*(..))" />
+        <!--<aop:pointcut id="demo2" expression="execution(* com.jack.service.aop.StudentServiceImpl.delete(..))" />
+        <aop:pointcut id="demo3" expression="execution(* com.jack.service.aop.StudentServiceImpl.update(..))" />
+        <aop:pointcut id="demo4" expression="execution(* com.jack.service.aop.StudentServiceImpl.find(..))" />
+        <aop:pointcut id="demo5" expression="execution(* com.jack.service.aop.StudentServiceImpl.delete(..))" />-->
+        <!--配置切面-->
+        <aop:aspect ref="myAspect">
+
+            <!--//前置通知；；；切入点表达式可以pointcut-ref="demo1"导入，也可以在通知里面设置-->
+         <!--   <aop:before method="checkprivate" pointcut="execution(* com.jack.service.aop.StudentServiceImpl.save(..))"></aop:before>-->
+         <!--   <aop:before method="checkprivate" pointcut-ref="demo"></aop:before>
+            &lt;!&ndash;后置通知&ndash;&gt;
+
+            <aop:after-returning method="writeLog" pointcut-ref="demo" returning="result"/>-->
+            <!--环绕通知-->
+            <aop:around method="around" pointcut-ref="demo" />
+            <!--异常抛出通知-->
+        <!--    <aop:after-throwing method="afterthrows" pointcut-ref="demo" throwing="ex" />
+            <aop:after method="after" pointcut-ref="demo"  />-->
+
+        </aop:aspect>
+
+    </aop:config>
+
+
+
+</beans>
