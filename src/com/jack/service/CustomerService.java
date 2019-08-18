@@ -21,5 +21,6 @@ public class CustomerService {
     @PreDestroy //相当于destroy-method
     public void destroy(){
         System.out.println ("destroy================");
+        System.out.println ("fffffffffffffffffffffffffffffffffffffffffff分支二");
     }
 }
