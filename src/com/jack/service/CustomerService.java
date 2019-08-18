@@ -25,5 +25,6 @@ public class CustomerService {
         System.out.println ( " = ==================="  );
         System.out.println ( " ++++++++++++++++++++++++++++++"  );
         System.out.println ("git主干合并");
+        System.out.println ("主干合并到分支");
     }
 }
