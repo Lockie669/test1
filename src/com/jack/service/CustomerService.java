@@ -22,5 +22,6 @@ public class CustomerService {
     public void destroy(){
         System.out.println ("destroy================");
         System.out.println ("fffffffffffffffffffffffffffffffffffffffffff分支二");
+        System.out.println ("git add xxx");
     }
 }
