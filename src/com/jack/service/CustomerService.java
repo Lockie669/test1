@@ -20,9 +20,7 @@ public class CustomerService {
     }
     @PreDestroy //相当于destroy-method
     public void destroy(){
-        System.out.println ("destroy================");
-        System.out.println ("fffffffffffffffffffffffffffffffffffffffffff分支二");
-        System.out.println ("git add xxx");
-        System.out.println ("555555555555555555555");
+        System.out.println ("git练习==============");
+
     }
 }
